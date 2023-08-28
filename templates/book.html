@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  {{title}}
+{% endblock %}
+
+{% block main %}
+<div id="container">
+  <!-- Book Cover photo -->
+  {% if isbn != 'None' %}
+    <a href="/book?q={{isbn}}">
+        <img id = "book-cover" src=https://covers.openlibrary.org/b/isbn/{{isbn}}-L.jpg class="cover"></img>
+    </a>
+  {% else %}
+    <a href="/book?q={{identifier}}">
+      <img id = "book-cover" src=https://covers.openlibrary.org/b/olid/{{identifier}}-L.jpg class="cover"></img>
+    </a>
+  {% endif %}
+  <br>
+  <!-- Book Information section -->
+  <div id="book-details">
+    <h1 style="text-align: left">{{title}}</h1> by
+        {% for i in range(author_name|length) %}
+            {% if i < ((author_name|length)-1) %}
+                <i><id class="author">{{author_name[i]}}, </id></i>
+            {% else %}
+                <i><id class="author">{{author_name[i]}}</id></i>
+            {% endif %}
+        {% endfor %}
+        <!-- safe -->
+    <br><br>
+    <b>ID:</b> {{identifier}}
+    <br>
+    <b>ISBN:</b> {{isbn}}
+    <br>
+      <!-- Buttons -->
+      <div class="readthis_container">
+        <div class="button-container">
+          {% if my_status == 'unread' %}
+            <input id="checkread" class="read_btn" type="checkbox" value="{{my_status}}" isbn="{{isbn}}">
+            <label for="checkread" class="read_btn_label"><b>I've read this</b></label>
+          {% else %}
+            <input id="checkread" class="read_btn" type="checkbox" value="{{my_status}}" isbn="{{isbn}}" checked>
+            <label for="checkread" class="read_btn_label"><b>I've read this</b></label>
+          {% endif %}
+          {% if on_list %}
+            <input id="addread" class="list_btn" type="checkbox" value="onlist" isbn="{{isbn}}" checked>
+            <label for="addread" class="list_btn_label"><b id='buttonText'>Remove from List</b></label>
+          {% else %}
+            <input id="addread" class="list_btn" type="checkbox" value="offlist" isbn="{{isbn}}">
+            <label for="addread" class="list_btn_label"><b id='buttonText'>Add to List</b></label>
+          {% endif %}
+        </div>
+      </div>
+    <br>
+    <p>{{description}}</p>
+    <br>
+    <br>
+  </div>
+</div>
+
+
+<script>
+  // Get all checkboxes
+  const checkboxes = document.querySelectorAll('.read_btn, .list_btn');
+
+  // Add a click event listener to each checkbox
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('click', (event) => {
+      //event.stopPropagation();
+      const isChecked = event.target.checked;
+      let readcheck = null;
+      let listcheck = null;
+
+      // Check read status
+      if (event.target.classList.contains('read_btn')) {
+        readcheck = isChecked ? 'read' : 'unread';
+      }
+      else {
+        readcheck = event.target.closest('.readthis_container').querySelector('.read_btn').checked ? 'read' : 'unread';
+      }
+
+      // Check List Status
+      if (event.target.classList.contains('list_btn')) {
+        listcheck = isChecked ? 'onlist' : 'offlist';
+        isChecked ? document.getElementById('buttonText').innerHTML = 'Remove from List' : document.getElementById('buttonText').innerHTML = 'Add to List';
+      }
+      else {
+        const onMyListCheckbox = event.target.closest('.readthis_container').querySelector('.list_btn');
+        listcheck = onMyListCheckbox.checked ? 'onlist' : 'offlist';
+      }
+      //else {
+      //  listcheck = event.target.closest('.readthis_container').querySelector('.list_btn').checked ? 'onlist' : 'offlist';
+      //}
+
+      // Send an AJAX request to update the database
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/book?q={{isbn}}');
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      xhr.onload = () => {
+        // report success or failure
+        if (xhr.status === 200) {
+          console.log('Status updated successfully!');
+        } else {
+          console.log('Error updating status!');
+        }
+      };
+      xhr.send(JSON.stringify({
+        'readStatus': readcheck,
+        'listStatus': listcheck
+      }));
+    });
+  });
+</script>
+{% endblock %}

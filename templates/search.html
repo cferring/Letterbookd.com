@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <h1>Search for any book by ISBN or Title</h1>
+    <br><br>
+    <form action="/search" method="post" onsubmit="document.getElementById('loading').style.display='block';">
+        <!-- Search ISBN form -->
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="isbn" name="isbn" placeholder="ISBN Number" type="text">
+        </div>
+        OR
+        <br><br>
+        <!-- Search title form -->
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="input" name="input" placeholder="Title" type="text">
+        </div>
+        <!-- Search button -->
+        <button class="btn btn-primary" type="submit">Search</button>
+        <!-- <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button> -->
+    </form>
+
+    <!-- Loading Icon -->
+    <!-- <div id="loading" style="display: none;">
+        <img src="static/BookLoader_2.gif" alt="loading" size="50%">
+    </div> -->
+
+    <br>
+
+<!-- ISBN results -->
+    {% if isbn %}
+        Books with the ISBN {{isbn}}:
+        <br>
+        <div class="g-col-4">
+        {% for i in range(results|length) %}
+            <a href="/book?q={{isbn}}">
+            <i>{{ results[i]['title'] }}</i> by {{ results[i]["author_name"][0] }}
+            <br>
+            <img src=https://covers.openlibrary.org/b/isbn/{{isbn}}-M.jpg></img>
+            </a>
+            <br>
+        {% endfor %}
+        </div>
+    {% endif %}
+<!-- Name Results -->
+    {% if input %}
+        Books matching the name {{input}}:
+        <br>
+        <!-- <div id="container"> -->
+        <div class="search">
+            {% for i in range(title|length) %}
+            <a href="/book?q={{isbn_list[i]}}" class="result">
+                <img src="https://covers.openlibrary.org/b/olid/{{cover_key[i]}}-M.jpg">
+                <div class="result-details">
+                    <h2 class="result-title">{{ title[i] }}</h2>
+                    <p class="result-author">by {{ author_name[i] }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <!-- </div> -->
+        {% if (title|length) == 0 %}
+            <p>No Results! Try using an ISBN if you have one, or a different query.</p>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
+
+
+<!-- <script>
+    function hideLoading() {
+        document.getElementById('loading').style.display = 'none';
+    }
+    load('/search', hideLoading);
+</script> -->

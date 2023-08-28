@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
+        <script src="https://kit.fontawesome.com/459fcbbf28.js" crossorigin="anonymous"></script>
+        <!-- https://favicon.io/emoji-favicons/money-bag/ -->
+        <link href="/static/bookicon.png" rel="icon">
+        <!-- <link href="/static/logo_sm.png" rel="icon"> -->
+
+
+        <link href="/static/index.css" type="text/css" rel="stylesheet">
+
+        <title>C$50 Final Project: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        <nav class="bg-dark navbar navbar-expand-md navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><span class="blue">LetterBookd</span><img src="/static/logo2_sm.png"></img></a>
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+                    {% if session["user_id"] %}
+                        <ul class="navbar-nav me-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/home">Home <i class="fa-solid fa-house"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="/mylist">My List <i class="fa-solid fa-bookmark"></i></a></li>
+                            <!--<li class="nav-item"><a class="nav-link" href="/suggest">Suggestions</a></li>-->
+                            <li class="nav-item"><a class="nav-link" href="/search">Search <i class="fa-solid fa-magnifying-glass"></i></a></li>
+                        </ul>
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/logout">Log Out <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/home">Home <i class="fa-solid fa-house"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="/register">Register <i class="fa-regular fa-address-card"></i></a></li>
+                            <li class="nav-item"><a class="nav-link" href="/login">Log In <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary mb-0 text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="text-center"> <!--removed: container-fluid py-5-->
+            {% block main %}{% endblock %}
+        </main>
+
+        <br>
+        <footer class="mb-5 small text-center text-muted">
+            Made by Conor Ferring. Data provided by <a href="https://openlibrary.org/">OpenLibrary</a>
+            <br>
+            Home image by <a href="https://www.freepik.com/free-photo/hot-coffee-cup-with-cappuccino-latte-art-eyeglasses-open-book-table_3089866.htm#query=coffee%20book&position=9&from_view=keyword&track=robertav1_2_sidr">Freepik</a>
+        </footer>
+
+    <div class="content"> <!--lOADER THING-->
+    <!-- LOADER STUFF -->
+    </div>
+    <div class="loader-wrapper">
+        <img src="static/BookLoader_2.gif" alt="loading">
+        <!-- <span class="loader"><span class="loader-inner"></span></span> -->
+    </div>
+
+      <script>
+        window.onload = function() {
+            var loaderWrapper = document.querySelector(".loader-wrapper");
+            loaderWrapper.style.transition = "opacity 1s";
+            loaderWrapper.style.opacity = "0";
+            setTimeout(function() {
+                loaderWrapper.style.display = "none";
+            }, 1000);
+        }
+      </script>
+
+    </body>
+
+</html>

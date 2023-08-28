@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <!-- Logged out Header -->
+    {% if session["user_id"] %}
+        <h1>Welcome, <b style="text-transform: capitalize">{{username}}</b>!</h1>
+    {% else %}
+        <div class="home_banner">
+            <div class="banner_content">
+                <img src="static/coffee3.jpg">
+                <h1 class="home_greeting"><b><i>
+                Save the books you want to read.<br>
+                Track the ones you've finished.<br>
+                No complications.<br></b></i>
+                <a href="/register"><button class="btn register_button">Register for Free!</button></a>
+                </h1>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Header -->
+    <h1>Check out today's trending books</h1>
+    <br>
+
+    <!-- Trending Books cards -->
+    <div class="g-col-4">
+        {% for result in results %}
+            {% if result['isbn'] == 'None' %}
+            <a class="navbar-brand" href="/book?q={{result['id']}}">
+                <img src=https://covers.openlibrary.org/b/olid/{{result['cover_key']}}-M.jpg class="home_cover"></img>
+            </a>
+            {% else %}
+            <a class="navbar-brand" href="/book?q={{result['isbn']}}">
+                <img src=https://covers.openlibrary.org/b/olid/{{result['cover_key']}}-M.jpg class="home_cover"></img>
+            </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <br>
+{% endblock %}

@@ -1,0 +1,621 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+    font: 500;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+
+.register_button {
+  /* background: linear-gradient(-20deg, #d0b782 20%, #537fbe 80%); */
+  background-image: linear-gradient(
+  140deg,
+  hsl(181deg 33% 72%) 0%,
+  hsl(178deg 33% 71%) 16%,
+  hsl(174deg 33% 71%) 25%,
+  hsl(170deg 33% 71%) 31%,
+  hsl(165deg 33% 71%) 35%,
+  hsl(161deg 33% 71%) 38%,
+  hsl(155deg 32% 71%) 40%,
+  hsl(149deg 31% 71%) 42%,
+  hsl(141deg 29% 71%) 44%,
+  hsl(132deg 27% 71%) 45%,
+  hsl(121deg 25% 72%) 46%,
+  hsl(109deg 26% 71%) 48%,
+  hsl(98deg 27% 70%) 49%,
+  hsl(88deg 28% 68%) 51%,
+  hsl(79deg 28% 67%) 54%,
+  hsl(71deg 29% 66%) 57%,
+  hsl(63deg 29% 65%) 62%,
+  hsl(56deg 32% 65%) 67%,
+  hsl(50deg 36% 65%) 75%,
+  hsl(45deg 41% 66%) 85%,
+  hsl(41deg 45% 66%) 100%
+);
+  /* btn btn-info */
+  border: none;
+  padding: 10px 20px;
+}
+
+.home_banner {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+
+.banner_content {
+  width: 100%;
+  /* Bring forward */
+  position: relative;
+  /* z-index: 2; */
+}
+
+.home_banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home_greeting {
+  text-align: center;
+  /* Background gradient #a0cecf */
+  /* background-image: linear-gradient(-20deg, #a0cecf 40%, #d0b782 60%); */
+  background-image: linear-gradient(
+    315deg,
+    hsl(181deg 33% 72%) 0%,
+    hsl(178deg 33% 71%) 16%,
+    hsl(174deg 33% 71%) 25%,
+    hsl(170deg 33% 71%) 31%,
+    hsl(165deg 33% 71%) 35%,
+    hsl(161deg 33% 71%) 38%,
+    hsl(155deg 32% 71%) 40%,
+    hsl(149deg 31% 71%) 42%,
+    hsl(141deg 29% 71%) 44%,
+    hsl(132deg 27% 71%) 45%,
+    hsl(121deg 25% 72%) 46%,
+    hsl(109deg 26% 71%) 48%,
+    hsl(98deg 27% 70%) 49%,
+    hsl(88deg 28% 68%) 51%,
+    hsl(79deg 28% 67%) 54%,
+    hsl(71deg 29% 66%) 57%,
+    hsl(63deg 29% 65%) 62%,
+    hsl(56deg 32% 65%) 67%,
+    hsl(50deg 36% 65%) 75%,
+    hsl(45deg 41% 66%) 85%,
+    hsl(41deg 45% 66%) 100%
+  );
+  /* Clip background where text is. Webkit to work with chrome.*/
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* Make Letters transparent so clipped background shows */
+  color: transparent;
+  /* Push back */
+  position: relative;
+  /* z-index: 2; */
+}
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+
+}
+
+.result {
+  width: 48%;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.result img {
+  width: 100px;
+  height: 150px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.result-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  text-align: left;
+}
+
+.result-author {
+  font-size: 14px;
+  margin: 5px 0 0 0;
+}
+
+/*
+.book-info {
+  display: flex;
+  align-items: center;
+}
+
+.author {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.2em;
+} */
+
+.home_cover {
+  border: 5px solid #537fbe;
+  width:  200px;
+  height: 300px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+.cover {
+  border: 5px solid #d0b782;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  display: block;
+  float: left;
+  margin-top: 17px;
+}
+
+#book-cover {
+  flex: 1 1 300px;
+  max-width: 100%;
+  height: auto;
+  margin: 0 20px 20px 0;
+}
+
+#book-details {
+  flex: 1 1 300px;
+  max-width: 100%;
+  text-align: left;
+}
+
+
+
+.bookpage {
+  text-align: left;
+  float: right;
+  max-width: 60%;
+  margin-right: 30px;
+}
+
+.button-container {
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 15px;
+}
+
+.read_btn {
+  display: none;
+  align-items: center;
+  width: 100px;
+  /* NEW */
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.read_btn_label {
+  cursor: pointer;
+  align-items: center;
+  text-align: left;
+  padding: 10px;
+  animation: undone .5s;
+  border-right: 1px dashed #fff;
+}
+
+.read_btn_label::before {           /* Formerly checklabel */
+  content: '\f10c'; /* circle outline */
+  display: inline-block;
+  margin-right: 10px;
+  font: 1.5em 'FontAwesome';
+  cursor: pointer;
+}
+
+.read_btn_label:hover, .read_btn:focus + .read_btn_label {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.read_btn:checked + .read_btn_label {
+  animation: done .5s;
+}
+
+.read_btn:checked + .read_btn_label::before {
+  content: '\f058';   /* circle checkmark */
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+  /* My List stuff */
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,700);
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  color: #435757;
+  /* background: linear-gradient(-20deg, #d0b782 20%, #a0cecf 80%); */
+  background-image: linear-gradient(
+    145deg,
+    hsl(181deg 33% 72%) 0%,
+    hsl(178deg 33% 71%) 16%,
+    hsl(174deg 34% 71%) 25%,
+    hsl(170deg 35% 71%) 31%,
+    hsl(165deg 35% 70%) 35%,
+    hsl(161deg 35% 70%) 38%,
+    hsl(155deg 35% 70%) 40%,
+    hsl(149deg 34% 70%) 42%,
+    hsl(142deg 32% 71%) 44%,
+    hsl(133deg 31% 71%) 45%,
+    hsl(121deg 28% 72%) 46%,
+    hsl(108deg 30% 70%) 48%,
+    hsl(98deg 31% 69%) 49%,
+    hsl(88deg 32% 68%) 51%,
+    hsl(79deg 33% 66%) 54%,
+    hsl(71deg 34% 65%) 57%,
+    hsl(63deg 34% 64%) 62%,
+    hsl(56deg 37% 63%) 67%,
+    hsl(50deg 43% 64%) 75%,
+    hsl(45deg 48% 64%) 85%,
+    hsl(41deg 54% 65%) 100%
+  );
+  font: 500 1.2em/1.2 'Roboto', sans-serif;
+  margin: 0;    /* new */
+  padding: 0;   /* new */
+}
+
+footer {
+  align: center;
+  bottom: 0;
+}
+
+
+.container_2 {
+  max-width: 450px;
+  margin: 0 auto;
+  border-top: 5px solid #435757;
+  background-color: rgba(255, 255, 255, .2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  user-select: none;
+}
+
+h1 {
+  margin: 0px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, .4);
+  font-size: 1.8em;
+  text-align: center;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  counter-reset: done-items undone-items;
+}
+
+h2 {
+  position: relative;
+  margin: 0;
+  padding: 10px 0;
+  font-size: 1.2em;
+}
+
+h2::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: -20px;
+  width: 5px;
+  background-color: #435757;
+}
+
+h2::after {
+  display: block;
+  float: right;
+  font-weight: normal;
+}
+
+.done {
+  order: 3; /*1*/
+}
+
+.done::after {
+  content: ' (' counter(done-items) ')';
+}
+
+.undone {
+  order: 1; /*3*/
+}
+
+.undone::after {
+  content: ' (' counter(undone-items) ')';
+}
+
+/* hide inputs offscreen, but at the same vertical positions as the correpsonding labels, so that tabbing scrolls the viewport as expected */
+.checklist {
+  display: block;
+  height: 53px;
+  margin: 0 0 -53px -9999px;
+  order: 2;
+  outline: none;
+  counter-increment: undone-items;
+}
+
+.checklist:checked {
+  order: 4;
+  counter-increment: done-items;
+}
+
+.checklabel {
+  display: block;
+  position: relative;
+  text-align: left;
+  padding: 15px 0 15px 45px;
+  border-top: 1px dashed #fff;
+  order: 2;
+  animation: undone .5s;
+}
+
+.checklabel::before {
+  content: '\f10c'; /* circle outline */
+  display: block;
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  font: 1.5em 'FontAwesome';
+  cursor: pointer;
+}
+
+
+.removeBtn::after { /* new CSS code for the minus sign icon */
+  content: '\f146'; /* minus icon */
+  display: block;
+  position: absolute;
+  top: 11px;
+  right: 10px;
+  font: 1.5em 'FontAwesome';
+  cursor: pointer;
+}
+
+.checklabel:hover, .checklist:focus + .checklabel {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.checklist:checked + .checklabel {
+  order: 4;
+  animation: done .5s;
+}
+
+.checklist:checked + .checklabel::before {
+  content: '\f058';   /* circle checkmark */
+}
+
+
+/* Add to reading list button */
+.list_btn {
+  display: none;
+  align-items: center;
+  width: 100px;
+  /* NEW */
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.list_btn_label {
+  cursor: pointer;
+  align-items: center;
+  text-align: left;
+  padding: 10px;
+  animation: undone .5s;
+}
+
+.list_btn_label::before {
+  content: '\f7e6'; /* +Book icon */
+  /*display: block;*/
+  display: inline-block;
+  margin-right: 10px;
+  font: 1.5em 'FontAwesome';
+}
+
+.list_btn_label:hover, .list_btn:focus + .list_btn_label {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.list_btn:checked + .list_btn_label {
+  animation: done .5s;
+}
+
+.list_btn:checked + .list_btn_label::before {
+  content: '\f02e';   /* Filled-in bookmark icon */
+}
+
+
+@keyframes done {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .4);
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .4);
+  }
+}
+
+@keyframes undone {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, .4);
+    transform: translateY(-20px);
+  }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .4);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  #book-cover {
+    margin: 0 0 20px 0;
+  }
+
+  .button {
+    margin-bottom: 10px;
+  }
+}
+
+/* Blank book covers */
+.blankcover {
+  background-color: #6aa84f;
+  padding: 0 1.2rem 0.8rem;
+  height: 272px;
+  width: 180px;
+  -webkit-box-decoration-break: clone;
+  -ms-box-decoration-break: clone;
+  -o-box-decoration-break: clone;
+  box-decoration-break: clone;
+  position: relative; left: 40%; top: 60%;
+}
+
+.covertext {
+  color: white;
+  font-size: 25px;
+  font-size: calc(1.5vw + 10px);
+  line-height: 3rem;
+  text-indent: -20px;
+  margin: 10px;
+  white-space: normal;
+  margin-top: 20px;
+  display: block;
+  line-height: 1em; /* a */
+  max-height: 1em; /* a x number of line to show (ex : 2 line)  */
+  container-name: blankcover;
+}
+
+
+/* LOAD SPINNER */
+/* aTTEMPT 2 */
+/* body {
+  margin: 0;
+  padding: 0;
+  width:100vw;
+  height: 100vh;
+  background-color: #eee;
+} */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:100%;
+}
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: linear-gradient(-20deg, #d0b782 20%, #a0cecf 80%); */
+  background-image: linear-gradient(
+    145deg,
+    hsl(181deg 33% 72%) 0%,
+    hsl(178deg 33% 71%) 16%,
+    hsl(174deg 34% 71%) 25%,
+    hsl(170deg 35% 71%) 31%,
+    hsl(165deg 35% 70%) 35%,
+    hsl(161deg 35% 70%) 38%,
+    hsl(155deg 35% 70%) 40%,
+    hsl(149deg 34% 70%) 42%,
+    hsl(142deg 32% 71%) 44%,
+    hsl(133deg 31% 71%) 45%,
+    hsl(121deg 28% 72%) 46%,
+    hsl(108deg 30% 70%) 48%,
+    hsl(98deg 31% 69%) 49%,
+    hsl(88deg 32% 68%) 51%,
+    hsl(79deg 33% 66%) 54%,
+    hsl(71deg 34% 65%) 57%,
+    hsl(63deg 34% 64%) 62%,
+    hsl(56deg 37% 63%) 67%,
+    hsl(50deg 43% 64%) 75%,
+    hsl(45deg 48% 64%) 85%,
+    hsl(41deg 54% 65%) 100%
+  );
+  /* background-color: #242f3f; */
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  animation: loader 2s infinite ease;
+}
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% { transform: rotate(0deg);}
+  25% { transform: rotate(180deg);}
+  50% { transform: rotate(180deg);}
+  75% { transform: rotate(360deg);}
+  100% { transform: rotate(360deg);}
+}
+
+@keyframes loader-inner {
+  0% { height: 0%;}
+  25% { height: 0%;}
+  50% { height: 100%;}
+  75% { height: 100%;}
+  100% { height: 0%;}
+}

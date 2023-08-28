@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My List
+{% endblock %}
+
+{% block main %}
+
+
+    <!--
+    Checkbox Trickery with CSS:
+    http://codersblock.com/blog/checkbox-trickery-with-css/
+    TO CS50 reviewers: I hope this is ok to use! let me know if not and I will make something custom
+    -->
+  <div class="py-5">
+    <div class="container_2">
+      <h1>My Reading List</h1>
+      <div class="items">
+        <!-- FOR every item in user's list where status=unread:
+        Change checked to unchecked -->
+
+      {% for i in range(my_titles|length) %}
+        {% if my_status[i] == 'unread' %}
+          <input id="item{{i}}" class="checklist" type="checkbox" value="{{ my_status[i] }}">
+            <label for="item{{i}}" class="checklabel">
+            {{my_titles[i]}}
+            <label class="removeBtn"></label>
+          </label>
+        {% else %}
+          <input id="item{{i}}" class="checklist" type="checkbox" value="{{ my_status[i] }}" checked>
+          <label for="item{{i}}" class="checklabel">
+            {{my_titles[i]}}
+            <label class="removeBtn"></label>
+          </label>
+        {% endif %}
+      {% endfor %}
+
+      <h2 class="done" aria-hidden="true">Finished</h2>
+      <h2 class="undone" aria-hidden="true">To-read</h2>
+      </div>
+    </div>
+  </div>
+
+
+    <script>
+      // Get all checkboxes
+      const checkboxes = document.querySelectorAll('.checklist');
+
+      // Add a click event listener to each checkbox
+      checkboxes.forEach((checkbox, i) => {
+        checkbox.addEventListener('click', (event) => {
+          //event.stopPropagation();
+          const isChecked = event.target.checked;
+          const value = isChecked ? 'read' : 'unread';
+
+          // Send an AJAX request to update the database
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', '/mylist');
+          xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+          xhr.onload = () => {
+            if (xhr.status === 200) {
+              console.log('Item removed successfully!');
+            } else {
+              console.log('Error removing from list!');
+            }
+          };
+          xhr.send(JSON.stringify({
+            'list_item': i,
+            'status': value
+          }));
+        });
+      });
+
+      // Get all deletions
+      const removeBtns = document.querySelectorAll('.removeBtn');
+      // Add a click event listener to each trash can
+      removeBtns.forEach((removeBtn, i) => {
+        removeBtn.addEventListener('click', (event) => {
+          event.stopPropagation();
+          // Get the index of the book being deleted
+          const index = parseInt(event.target.getAttribute('for'));
+
+          // Send an AJAX request to update the database
+          const xhr = new XMLHttpRequest();
+          xhr.open('POST', '/mylist');
+          xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+          xhr.onload = () => {
+            if (xhr.status === 200) {
+              console.log('Status updated successfully!');
+              // Remove the item from the DOM
+              const item = removeBtn.closest('.checklabel');
+              item.remove();
+            } else {
+              console.log('Error updating status!');
+            }
+          };
+          xhr.send(JSON.stringify({
+            'list_item': i,
+            'action': 'delete'
+          }));
+        });
+      });
+    </script>
+{% endblock %}
+<!--
+0151008116
+5329011000
+-->
